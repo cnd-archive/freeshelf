@@ -1,5 +1,6 @@
 from books.models import Book, Category
 from django.contrib import admin
+from imagekit.admin import AdminThumbnail
 
 class CategoryInline(admin.StackedInline):
     model = Category.books.through
@@ -7,6 +8,7 @@ class CategoryInline(admin.StackedInline):
 class BookAdmin(admin.ModelAdmin):
     fields = ['title', 'book_url', 'author', 'author_url', 'description', 'cover']
     inlines = [CategoryInline,]
+    admin_thumbnail = AdminThumbnail(image_field='thumbnail')
 
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}

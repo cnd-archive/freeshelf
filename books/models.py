@@ -1,5 +1,8 @@
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.utils import timezone
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFit
 
 class Book(models.Model):
     title = models.CharField(max_length=255)
@@ -8,6 +11,9 @@ class Book(models.Model):
     author_url = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField()
     cover = models.ImageField(upload_to="covers")
+    thumbnail = ImageSpecField(
+        [ResizeToFit(width=200, height=200, upscale=False)],
+        image_field='cover', format='JPEG', options={'quality': 90})
     added_at = models.DateTimeField(blank=True)
 
     def __unicode__(self):

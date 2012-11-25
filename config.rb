@@ -4,7 +4,7 @@ require 'zurb-foundation'
 
 # Set this to the root of your project when deployed:
 http_path = "/"
-css_dir = "freeshelf/static/css"
+css_dir = "freeshelf/static/stylesheets"
 sass_dir = "freeshelf/sass"
 images_dir = "freeshelf/static/images"
 javascripts_dir = "freeshelf/static/javascripts"
