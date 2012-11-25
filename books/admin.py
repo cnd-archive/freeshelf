@@ -9,7 +9,8 @@ class BookAdmin(admin.ModelAdmin):
     inlines = [CategoryInline,]
 
 class CategoryAdmin(admin.ModelAdmin):
-    fields = ['name']
+    prepopulated_fields = {'slug': ('name',)}
+    fields = ['name', 'slug']
 
 admin.site.register(Book, BookAdmin)
 admin.site.register(Category, CategoryAdmin)

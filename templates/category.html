@@ -1,0 +1,11 @@
+<p>Hello, world! You are at the {{ category }} category.</p>
+
+{% if books %}
+    <ul>
+        {% for book in books %}
+            <li>{{ book }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No books are available.</p>
+{% endif %}
