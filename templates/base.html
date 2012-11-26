@@ -14,7 +14,9 @@
 
     <!-- Included CSS Files -->
     <link href='http://fonts.googleapis.com/css?family=Arvo:700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{% static 'stylesheets/app.css' %}">
+    {% assets 'css_all' %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}">
+    {% endassets %}
     <script src="{% static 'javascripts/foundation/modernizr.foundation.js' %}"></script>
 </head>
 <body>

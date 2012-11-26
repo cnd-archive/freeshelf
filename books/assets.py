@@ -1,4 +1,11 @@
 from django_assets import Bundle, register
+
+css = Bundle(
+    'stylesheets/app.css',
+    filters='cssmin',
+    output='gen/app.min.css')
+register('css_all', css)
+
 js = Bundle(
     'javascripts/foundation/jquery.js',
     # 'javascripts/foundation/jquery.cookie.js',
