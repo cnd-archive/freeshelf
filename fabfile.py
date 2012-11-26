@@ -23,6 +23,7 @@ def collectstatic():
     with cd(remote_dir):
             with prefix(venv_cmd):
                 run('python manage.py collectstatic --noinput -v 0')
+                run('python manage.py assets build')
 
 def restart():
     with cd(remote_dir):
