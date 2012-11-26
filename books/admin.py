@@ -6,13 +6,17 @@ class CategoryInline(admin.StackedInline):
     model = Category.books.through
 
 class BookAdmin(admin.ModelAdmin):
-    fields = ['title', 'book_url', 'author', 'author_url', 'description', 'cover']
+    fieldsets = [
+        (None, {'fields': ['title', 'book_url', 'free']}),
+        ('Author', {'fields': ['author', 'author_url']}),
+        ('Display', {'fields': ['description', 'cover']}),
+    ]
     inlines = [CategoryInline,]
     admin_thumbnail = AdminThumbnail(image_field='thumbnail')
 
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
-    fields = ['name', 'slug']
+    fields = ['name', 'slug', 'subtitle', 'banner']
 
 admin.site.register(Book, BookAdmin)
 admin.site.register(Category, CategoryAdmin)

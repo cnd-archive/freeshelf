@@ -4,10 +4,19 @@ from django.utils import timezone
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFit
 
+class FreeBookManager(models.Manager):
+    def get_query_set(self):
+        return super(FreeBookManager, self).get_query_set().filter(free=True)
+
+class PromoBookManager(models.Manager):
+    def get_query_set(self):
+        return super(FreeBookManager, self).get_query_set().filter(free=False)
+
 class Book(models.Model):
     title = models.CharField(max_length=255)
-    author = models.CharField(max_length=255)
     book_url = models.CharField(max_length=255)
+    free = models.BooleanField(default=True)
+    author = models.CharField(max_length=255, null=True, blank=True)
     author_url = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField()
     cover = models.ImageField(upload_to="covers")
@@ -15,6 +24,10 @@ class Book(models.Model):
         [ResizeToFit(width=200, height=200, upscale=False)],
         image_field='cover', format='JPEG', options={'quality': 90})
     added_at = models.DateTimeField(blank=True)
+
+    objects = models.Manager()
+    for_free = FreeBookManager()
+    promotional = PromoBookManager()
 
     def __unicode__(self):
         return self.title
@@ -27,6 +40,8 @@ class Book(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(blank=True)
+    subtitle = models.CharField(max_length=255, null=True, blank=True)
+    banner = models.ImageField(upload_to="banners", null=True, blank=True)
     books = models.ManyToManyField(Book)
 
     def __unicode__(self):
