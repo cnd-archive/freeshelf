@@ -19,7 +19,9 @@
                         {% for book in books %}
                             <li>
                                 <div class="six columns">
-                                    <img src="{{ book.thumbnail.url }}" />
+                                    <a href="{{ book.book_url }}">
+                                        <img src="{{ book.thumbnail.url }}" />
+                                    </a>
                                 </div>
                                 <div class="six columns">
                                     <div class="book-title"><a href="{{ book.book_url }}">{{ book }}</a></div>
