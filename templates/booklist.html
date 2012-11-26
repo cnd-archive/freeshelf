@@ -14,7 +14,7 @@
     <div class="nine columns">
         {% block shelf %}
             {% if books %}
-                <ul class="block-grid two-up mobile">
+                <ul class="block-grid two-up mobile booklist">
                     {% block booklist %}
                         {% for book in books %}
                             <li>
@@ -22,15 +22,15 @@
                                     <img src="{{ book.thumbnail.url }}" />
                                 </div>
                                 <div class="six columns">
-                                    <div><a href="{{ book.book_url }}">{{ book }}</a></div>
-                                    <div>
+                                    <div class="book-title"><a href="{{ book.book_url }}">{{ book }}</a></div>
+                                    <div class="book-author">
                                         {% if book.author_url %}
                                         <a href="{{ book.author_url }}">{{ book.author }}</a>
                                         {% else %}
                                         {{ book.author }}
                                         {% endif %}
                                     </div>
-                                    <div>{{ book.description }}</div>
+                                    <div class="book-description">{{ book.description }}</div>
                                 </div>
                             </li>
                         {% endfor %}

@@ -55,6 +55,15 @@ body {
     }
 }
 
+.booklist {
+    .book-title {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    .book-author, .book-description {
+        color: #666;
+    }
+}
 
 // ----------------------------------------
 // Import specific parts of Foundation by commenting the import "foundation"

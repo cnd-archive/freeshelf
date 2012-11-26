@@ -5942,3 +5942,13 @@ body {
   padding-top: 14px;
   padding-bottom: 14px;
 }
+
+/* line 59, ../../sass/app.scss */
+.booklist .book-title {
+  font-weight: bold;
+  text-decoration: underline;
+}
+/* line 63, ../../sass/app.scss */
+.booklist .book-author, .booklist .book-description {
+  color: #666;
+}
