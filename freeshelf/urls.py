@@ -7,14 +7,12 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('freeshelf.views',
-    url(r'^$', 'home'),
-    url(r'^category/(?P<category_slug>\w+)/$', 'category'),
+    url(r'^$', 'home', name='home'),
+    url(r'^category/(?P<category_slug>\w+)/$', 'category', name='category'),
 )
 
 urlpatterns += patterns('',
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
 

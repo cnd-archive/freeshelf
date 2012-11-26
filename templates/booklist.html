@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <header class="twelve columns">
+        {% block header %}
+            <h1>Freeshelf</h1>
+            <h2>The best free books about computing</h2>
+        {% endblock %}
+    </header>
+</div>
+
+<div class="row">
+    <div class="nine columns">
+        {% block shelf %}
+            {% if books %}
+                <ul class="block-grid two-up mobile">
+                    {% block booklist %}
+                        {% for book in books %}
+                            <li>
+                                <div class="six columns">
+                                    <img src="{{ book.thumbnail.url }}" />
+                                </div>
+                                <div class="six columns">
+                                    <div><a href="{{ book.book_url }}">{{ book }}</a></div>
+                                    <div>
+                                        {% if book.author_url %}
+                                        <a href="{{ book.author_url }}">{{ book.author }}</a>
+                                        {% else %}
+                                        {{ book.author }}
+                                        {% endif %}
+                                    </div>
+                                    <div>{{ book.description }}</div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% endblock %}
+                </ul>
+            {% else %}
+                <p>No books are available.</p>
+            {% endif %}
+        {% endblock shelf %}
+    </div>
+
+    <div class="three columns sidebar">
+        {% block sidebar %}
+            <h3>Shelves</h3>
+            <ul class="side-nav">
+                <li><a href="{% url home %}">All</a></li>
+                {% for category in categories %}
+                    <li>
+                        <a href="{% url category category.slug %}">
+                            {{ category }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endblock sidebar %}
+    </div>
+</div>
+{% endblock content %}
+

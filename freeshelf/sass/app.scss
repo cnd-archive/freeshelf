@@ -4,6 +4,58 @@
 // Comment out this import if you are customizing you imports below
 @import "foundation";
 
+body {
+    background: url('../images/wild_oliva.png');
+}
+
+#main {
+    @include border-radius(4px, 4px);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background: url('../images/cream_dust.png');
+
+    header {
+        text-align: center;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        margin-bottom: 14px;
+        h1, h2 {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        h1 {
+            font-family: 'Arvo', serif;
+            font-weight: bold;
+            font-size: 400%;
+        }
+        h2 {
+            font-size: 100%;
+        }
+    }
+
+    .sidebar {
+        border-left: 1px solid #CCC;
+
+        h3 {
+            font-size: 120%;
+            margin-top: 0;
+        }
+
+        .side-nav {
+            padding-top: 0;
+        }
+    }
+
+    footer {
+        font-size: 80%;
+        border-top: 1px solid #CCC;
+        margin-top: 14px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }
+}
+
+
 // ----------------------------------------
 // Import specific parts of Foundation by commenting the import "foundation"
 // and uncommenting what you want below. You must uncomment the following if customizing

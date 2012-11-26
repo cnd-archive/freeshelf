@@ -1,5 +1,12 @@
 {% extends "booklist.html" %}
 
 {% block header %}
-<h1>{{ category }}</h1>
+<h1>{{ category }} Freeshelf</h1>
+<h2>
+    {% if category.subtitle %}
+        {{ category.subtitle }}
+    {% else %}
+        The best free books about {{ category }}
+    {% endif %}
+</h2>
 {% endblock %}
