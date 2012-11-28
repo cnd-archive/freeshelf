@@ -5887,7 +5887,7 @@ table.hide-for-medium {
 }
 /* line 7, ../../sass/app.scss */
 body {
-  background: url("../images/wild_oliva.png");
+  background: url("../images/wild_oliva.png") #3d3d3d;
 }
 
 /* line 11, ../../sass/app.scss */
@@ -5897,7 +5897,7 @@ body {
   border-radius: 4px / 4px;
   margin-top: 30px;
   margin-bottom: 30px;
-  background: url("../images/cream_dust.png");
+  background: url("../images/cream_dust.png") #fafafa;
 }
 /* line 17, ../../sass/app.scss */
 #main header {

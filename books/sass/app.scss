@@ -5,14 +5,14 @@
 @import "foundation";
 
 body {
-    background: url('../images/wild_oliva.png');
+    background: url('../images/wild_oliva.png') #3D3D3D;
 }
 
 #main {
     @include border-radius(4px, 4px);
     margin-top: 30px;
     margin-bottom: 30px;
-    background: url('../images/cream_dust.png');
+    background: url('../images/cream_dust.png') #FAFAFA;
 
     header {
         text-align: center;
