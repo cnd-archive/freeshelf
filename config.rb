@@ -4,10 +4,10 @@ require 'zurb-foundation'
 
 # Set this to the root of your project when deployed:
 http_path = "/"
-css_dir = "freeshelf/static/stylesheets"
-sass_dir = "freeshelf/sass"
-images_dir = "freeshelf/static/images"
-javascripts_dir = "freeshelf/static/javascripts"
+css_dir = "books/static/stylesheets"
+sass_dir = "books/sass"
+images_dir = "books/static/images"
+javascripts_dir = "books/static/javascripts"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed

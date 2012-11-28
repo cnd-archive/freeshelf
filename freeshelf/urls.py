@@ -6,7 +6,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('freeshelf.views',
+urlpatterns = patterns('books.views',
     url(r'^$', 'home', name='home'),
     url(r'^category/(?P<category_slug>\w+)/$', 'category', name='category'),
 )

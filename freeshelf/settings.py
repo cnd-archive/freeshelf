@@ -121,7 +121,6 @@ INSTALLED_APPS = (
     'django_assets',
     'south',
     'books',
-    'freeshelf',
 )
 
 # A sample logging configuration. The only tangible logging
