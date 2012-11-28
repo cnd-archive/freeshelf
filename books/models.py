@@ -15,6 +15,7 @@ class PromoBookManager(models.Manager):
 class Book(models.Model):
     title = models.CharField(max_length=255)
     book_url = models.CharField(max_length=255)
+    print_url = models.CharField(max_length=255, null=True, blank=True)
     free = models.BooleanField(default=True)
     author = models.CharField(max_length=255, null=True, blank=True)
     author_url = models.CharField(max_length=255, null=True, blank=True)
@@ -23,7 +24,8 @@ class Book(models.Model):
     thumbnail = ImageSpecField(
         [ResizeToFit(width=200, height=200, upscale=False)],
         image_field='cover', format='JPEG', options={'quality': 90})
-    added_at = models.DateTimeField(blank=True)
+    publish_year = models.PositiveIntegerField(null=True, blank=True)
+    added_at = models.DateTimeField(auto_now_add=True)
 
     objects = models.Manager()
     for_free = FreeBookManager()
