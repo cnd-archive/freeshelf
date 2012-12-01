@@ -1,15 +1,7 @@
 {% extends "base.html" %}
-
+{% load activelink %}
+{% load url from future %}
 {% block content %}
-<div class="row">
-    <header class="twelve columns">
-        {% block header %}
-            <h1>Freeshelf</h1>
-            <h2>The best free books about computing</h2>
-        {% endblock %}
-    </header>
-</div>
-
 <div class="row">
     <div class="nine columns">
         {% block shelf %}
@@ -56,12 +48,21 @@
         {% block sidebar %}
             <h3>Shelves</h3>
             <ul class="side-nav">
-                <li><a href="{% url home %}">All</a></li>
+                <li>
+                    {% ifactive "home" %}
+                        <strong>All</strong>
+                    {% else %}
+                        <a href="{% url "home" %}">All</a>
+                    {% endifactive %}
+                </li>
                 {% for category in categories %}
+                    {% url "category" category.slug as cat_url %}
                     <li>
-                        <a href="{% url category category.slug %}">
-                            {{ category }}
-                        </a>
+                        {% ifactive cat_url %}
+                            <strong>{{ category }}</strong>
+                        {% else %}
+                            <a href="{{ cat_url }}">{{ category }}</a>
+                        {% endifactive %}
                     </li>
                 {% endfor %}
             </ul>

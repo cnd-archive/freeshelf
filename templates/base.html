@@ -23,6 +23,15 @@
 <body>
     <div class="row">
         <div class="twelve columns" id="main">
+            <div class="row">
+            <header class="twelve columns">
+                {% block header %}
+                    <h1>Freeshelf</h1>
+                    <h2 class="subheader">The best free books about computing</h2>
+                {% endblock %}
+            </header>
+            </div>
+
             {% block content %}{% endblock %}
             <footer>
                 <p>
