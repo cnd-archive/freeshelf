@@ -1,7 +1,13 @@
 from django.shortcuts import render_to_response, get_object_or_404
-from django import template
 from django.template import RequestContext
 from books.models import Category, Book
+
+
+def custom_404(request):
+    categories = Category.objects.order_by('name').all()
+    return render_to_response('404.html',
+        {'categories': categories},
+        context_instance=RequestContext(request))
 
 
 def home(request):

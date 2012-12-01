@@ -1,73 +1,40 @@
 {% extends "base.html" %}
-{% load activelink %}
-{% load url from future %}
-{% block content %}
-<div class="row">
-    <div class="nine columns">
-        {% block shelf %}
-            {% if books %}
-                <ul class="block-grid two-up mobile booklist">
-                    {% block booklist %}
-                        {% for book in books %}
-                            <li>
-                                <div class="five columns">
-                                    <a href="{{ book.book_url }}">
-                                        <img src="{{ book.thumbnail.url }}" />
-                                    </a>
-                                </div>
-                                <div class="seven columns">
-                                    <div class="book-title"><a href="{{ book.book_url }}">{{ book }}</a></div>
-                                    <div class="book-author">
-                                        {% if book.author_url %}
-                                        <a href="{{ book.author_url }}">{{ book.author }}</a>
-                                        {% else %}
-                                        {{ book.author }}
-                                        {% endif %}
-                                    </div>
-                                    {% if book.publish_year %}
-                                        <div class="publish-year">{{ book.publish_year }}</div>
-                                    {% endif %}
-                                    <div class="book-description">{{ book.description }}</div>
-                                    {% if book.print_url %}
-                                        <div class="print-url">
-                                            <a href="{{ book.print_url }}">Buy a print copy.</a>
-                                        </div>
-                                    {% endif %}
-                                </div>
-                            </li>
-                        {% endfor %}
-                    {% endblock %}
-                </ul>
-            {% else %}
-                <p>No books are available.</p>
-            {% endif %}
-        {% endblock shelf %}
-    </div>
-
-    <div class="three columns sidebar">
-        {% block sidebar %}
-            <h3>Shelves</h3>
-            <ul class="side-nav">
-                <li>
-                    {% ifactive "home" %}
-                        <strong>All</strong>
-                    {% else %}
-                        <a href="{% url "home" %}">All</a>
-                    {% endifactive %}
-                </li>
-                {% for category in categories %}
-                    {% url "category" category.slug as cat_url %}
+{% block shelf %}
+    {% if books %}
+        <ul class="block-grid two-up mobile booklist">
+            {% block booklist %}
+                {% for book in books %}
                     <li>
-                        {% ifactive cat_url %}
-                            <strong>{{ category }}</strong>
-                        {% else %}
-                            <a href="{{ cat_url }}">{{ category }}</a>
-                        {% endifactive %}
+                        <div class="five columns">
+                            <a href="{{ book.book_url }}">
+                                <img src="{{ book.thumbnail.url }}" />
+                            </a>
+                        </div>
+                        <div class="seven columns">
+                            <div class="book-title"><a href="{{ book.book_url }}">{{ book }}</a></div>
+                            <div class="book-author">
+                                {% if book.author_url %}
+                                <a href="{{ book.author_url }}">{{ book.author }}</a>
+                                {% else %}
+                                {{ book.author }}
+                                {% endif %}
+                            </div>
+                            {% if book.publish_year %}
+                                <div class="publish-year">{{ book.publish_year }}</div>
+                            {% endif %}
+                            <div class="book-description">{{ book.description }}</div>
+                            {% if book.print_url %}
+                                <div class="print-url">
+                                    <a href="{{ book.print_url }}">Buy a print copy.</a>
+                                </div>
+                            {% endif %}
+                        </div>
                     </li>
                 {% endfor %}
-            </ul>
-        {% endblock sidebar %}
-    </div>
-</div>
-{% endblock content %}
+            {% endblock %}
+        </ul>
+    {% else %}
+        <p>No books are available.</p>
+    {% endif %}
+{% endblock shelf %}
 

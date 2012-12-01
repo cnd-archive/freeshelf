@@ -1,6 +1,8 @@
 {% load static from staticfiles %}
 {% load assets %}
 {% load settings_value %}
+{% load activelink %}
+{% load url from future %}
 <!DOCTYPE html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
@@ -26,13 +28,46 @@
             <div class="row">
             <header class="twelve columns">
                 {% block header %}
-                    <h1>Freeshelf</h1>
-                    <h2 class="subheader">The best free books about computing</h2>
+                <h1>Freeshelf</h1>
+                <h2 class="subheader">The best free books about computing</h2>
                 {% endblock %}
             </header>
             </div>
 
-            {% block content %}{% endblock %}
+            {% block content %}
+                <div class="row">
+                    <div class="nine columns">
+                        {% block shelf %}
+                        <p>No books are available.</p>
+                        {% endblock shelf %}
+                    </div>
+
+                    <div class="three columns sidebar">
+                        {% block sidebar %}
+                            <h3>Shelves</h3>
+                            <ul class="side-nav">
+                                <li>
+                                    {% ifactive "home" %}
+                                        <strong>All</strong>
+                                    {% else %}
+                                        <a href="{% url "home" %}">All</a>
+                                    {% endifactive %}
+                                </li>
+                                {% for category in categories %}
+                                    {% url "category" category.slug as cat_url %}
+                                    <li>
+                                        {% ifactive cat_url %}
+                                            <strong>{{ category }}</strong>
+                                        {% else %}
+                                            <a href="{{ cat_url }}">{{ category }}</a>
+                                        {% endifactive %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endblock sidebar %}
+                    </div>
+                </div>
+            {% endblock %}
             <footer>
                 <p>
                     Freeshelf created by Clinton Dreisbach. Have a suggestion for

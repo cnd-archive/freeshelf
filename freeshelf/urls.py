@@ -6,6 +6,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
 admin.autodiscover()
 
+handler404 = 'books.views.custom_404'
+
 urlpatterns = patterns('books.views',
     url(r'^$', 'home', name='home'),
     url(r'^category/(?P<category_slug>\w+)/$', 'category', name='category'),
