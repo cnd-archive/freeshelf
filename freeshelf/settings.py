@@ -3,9 +3,7 @@
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-ADMINS = (
-    ('Clinton Dreisbach', 'crnixon@gmail.com'),
-)
+ADMINS = ()
 
 MANAGERS = ADMINS
 
@@ -79,7 +77,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '(97tmw)1sn#kyf-ghemg_dghgp(oajc4q7ej#9kd(*7an_e_f$'
+SECRET_KEY = '1111111111-not-really-secret-111111111111111111111'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

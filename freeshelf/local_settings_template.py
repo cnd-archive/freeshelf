@@ -1,0 +1,10 @@
+ADMINS = (
+    ('Me', 'me@example.com'),
+)
+
+MANAGERS = ADMINS
+
+ASSETS_DEBUG = True
+
+VIGLINK_API_KEY = 'MY KEY YO'
+SECRET_KEY = 'SUPER_SECRET_KEY'
