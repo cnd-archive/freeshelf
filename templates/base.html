@@ -1,5 +1,6 @@
 {% load static from staticfiles %}
 {% load assets %}
+{% load settings_value %}
 <!DOCTYPE html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
@@ -24,9 +25,12 @@
         <div class="twelve columns" id="main">
             {% block content %}{% endblock %}
             <footer>
-                Freeshelf created by Clinton Dreisbach. Have a suggestion for
-                a book to highlight?
-                <a href="mailto:clinton@dreisbach.us">Email me.</a>
+                <p>
+                    Freeshelf created by Clinton Dreisbach. Have a suggestion for
+                    a book to highlight?
+                    <a href="mailto:clinton@dreisbach.us">Email me.</a><br />
+                    Links to print copies are affiliate links through <a href="http://www.viglink.com/policies/ftc?vgtag=badge" class="text"><span style="background: transparent url('//www.viglink.com/public/images/favicon.png') no-repeat 0% 50%; padding-left: 18px;">VigLink</span></a>.
+                </p>
             </footer>
         </div>
     </div>
@@ -46,5 +50,17 @@
     {% assets 'js_all' %}
         <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
+
+    <script type="text/javascript">
+        var vglnk = { api_url: '//api.viglink.com/api',
+                      key: '{% settings_value "VIGLINK_API_KEY" %}' };
+
+        (function(d, t) {
+            var s = d.createElement(t); s.type = 'text/javascript'; s.async = true;
+            s.src = ('https:' == document.location.protocol ? vglnk.api_url :
+                '//cdn.viglink.com/api') + '/vglnk.js';
+            var r = d.getElementsByTagName(t)[0]; r.parentNode.insertBefore(s, r);
+        }(document, 'script'));
+    </script>
 </body>
 </html>

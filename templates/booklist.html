@@ -36,6 +36,11 @@
                                         <div class="publish-year">{{ book.publish_year }}</div>
                                     {% endif %}
                                     <div class="book-description">{{ book.description }}</div>
+                                    {% if book.print_url %}
+                                        <div class="print-url">
+                                            <a href="{{ book.print_url }}">Buy a print copy.</a>
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </li>
                         {% endfor %}
