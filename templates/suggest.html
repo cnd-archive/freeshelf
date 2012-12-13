@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block content %}
+    <div class="row">
+        <div class="four columns">
+            <p>
+                Thanks for suggesting a book for FreeShelf. We really
+                appreciate you helping us build the best library of
+                free books about computing.
+            </p>
+        </div>
+        <div class="eight columns">
+            <form action="{% url 'suggest' %}" method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                    {% if field.errors %}
+                        <label id="id_{{ field.html_name }}" class="error">
+                            {{ field.label }}
+                        </label>
+                        {{ field }}
+                        <small class="error">
+                            {% for error in field.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </small>
+                    {% else %}
+                        {{ field.label_tag }}
+                        {{ field }}
+                    {% endif %}
+                {% endfor %}
+                <input type="submit" class="radius button" value="Suggest a book" />
+            </form>
+        </div>
+    </div>
+{% endblock %}

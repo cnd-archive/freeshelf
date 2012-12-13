@@ -34,6 +34,17 @@
             </header>
             </div>
 
+            {% if flash %}
+                <div class="row alerts">
+                {% for key, value in flash.items %}
+                    <div class="alert-box {{ value }} nine columns centered">
+                        {{ value }}
+                        <a href="" class="close">&times;</a>
+                    </div>
+                {% endfor %}
+                </div>
+            {% endif %}
+
             {% block content %}
                 <div class="row">
                     <div class="nine columns">
@@ -70,8 +81,10 @@
             {% endblock %}
             <footer>
                 <p>
-                    Freeshelf created by <a href="http://dreisbach.us">Clinton Dreisbach
-                    </a>. Have a suggestion for a book to highlight?
+                    Freeshelf created by <a href="http://dreisbach.us">Clinton Dreisbach</a>.
+                    Have a suggestion for a book to highlight?
+                    <!-- <a href="{% url "suggest" %}">Let us know.</a>
+                    Have other thoughts about this site? -->
                     <a href="mailto:clinton@dreisbach.us">Email me.</a><br />
                     Links to print copies are affiliate links through <a href="http://www.viglink.com/policies/ftc?vgtag=badge" class="text"><span style="background: transparent url('//www.viglink.com/public/images/favicon.png') no-repeat 0% 50%; padding-left: 18px;">VigLink</span></a>.
                 </p>
