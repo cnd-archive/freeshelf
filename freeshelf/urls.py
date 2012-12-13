@@ -10,7 +10,7 @@ handler404 = 'books.views.custom_404'
 
 urlpatterns = patterns('books.views',
     url(r'^$', 'home', name='home'),
-    url(r'^category/(?P<category_slug>\w+)/$', 'category', name='category'),
+    url(r'^category/(?P<category_slug>[\w\-]+)/$', 'category', name='category'),
     url(r'^suggest/$', 'suggest', name='suggest'),
 )
 

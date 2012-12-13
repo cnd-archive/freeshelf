@@ -69,7 +69,7 @@
                                         {% ifactive cat_url %}
                                             <strong>{{ category }}</strong>
                                         {% else %}
-                                            <a href="{{ url "category" category.slug }}">{{ category }}</a>
+                                            <a href="{% url "category" category.slug %}">{{ category }}</a>
                                         {% endifactive %}
                                     </li>
                                 {% endfor %}
