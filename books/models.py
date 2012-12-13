@@ -15,6 +15,7 @@ class PromoBookManager(models.Manager):
 class Book(models.Model):
     title = models.CharField(max_length=255)
     book_url = models.CharField(max_length=255)
+    isbn = models.CharField(max_length=13, null=True, blank=True)
     print_url = models.CharField(max_length=255, null=True, blank=True)
     free = models.BooleanField(default=True)
     author = models.CharField(max_length=255, null=True, blank=True)

@@ -8,7 +8,7 @@ class CategoryInline(admin.StackedInline):
 class BookAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {'fields': ['title', 'book_url',
-            'free', 'print_url', 'publish_year']}),
+            'isbn', 'print_url', 'publish_year']}),
         ('Author', {'fields': ['author', 'author_url']}),
         ('Display', {'fields': ['description', 'cover']}),
     ]
