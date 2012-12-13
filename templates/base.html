@@ -65,12 +65,11 @@
                                     {% endifactive %}
                                 </li>
                                 {% for category in categories %}
-                                    {% url "category" category.slug as cat_url %}
                                     <li>
                                         {% ifactive cat_url %}
                                             <strong>{{ category }}</strong>
                                         {% else %}
-                                            <a href="{{ cat_url }}">{{ category }}</a>
+                                            <a href="{{ url "category" category.slug }}">{{ category }}</a>
                                         {% endifactive %}
                                     </li>
                                 {% endfor %}
