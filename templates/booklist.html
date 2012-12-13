@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% load powells_url %}
+{% load settings_value %}
+
 {% block shelf %}
     {% if books %}
         <ul class="block-grid two-up mobile booklist">
@@ -23,7 +26,13 @@
                                 <div class="publish-year">{{ book.publish_year }}</div>
                             {% endif %}
                             <div class="book-description">{{ book.description }}</div>
-                            {% if book.print_url %}
+                            {% if 'POWELLS'|setting and book.isbn %}
+                                <div class="print-url">
+                                    <a href="{% powells_url book.isbn %}">
+                                        Find a print copy.
+                                    </a>
+                                </div>
+                            {% elif book.print_url %}
                                 <div class="print-url">
                                     <a href="{{ book.print_url }}">Buy a print copy.</a>
                                 </div>

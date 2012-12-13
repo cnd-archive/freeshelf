@@ -86,7 +86,12 @@
                     <!-- <a href="{% url "suggest" %}">Let us know.</a>
                     Have other thoughts about this site? -->
                     <a href="mailto:clinton@dreisbach.us">Email me.</a><br />
-                    Links to print copies are affiliate links through <a href="http://www.viglink.com/policies/ftc?vgtag=badge" class="text"><span style="background: transparent url('//www.viglink.com/public/images/favicon.png') no-repeat 0% 50%; padding-left: 18px;">VigLink</span></a>.
+                    {% if "POWELLS"|setting %}
+                        Links to print copies are affiliate links through
+                        <a href='http://www.powells.com/partner/{{ "POWELLS_ID"|setting }}?p_hp_3'><img src='http://www.powells.com/partners/logos_09/PartnerMicro2.gif' width=98 height=31 border=0 style="vertical-align: middle" alt='Powells.com' title='Visit Powells.com'></a>.
+                    {% else %}
+                        Links to print copies are affiliate links through <a href="http://www.viglink.com/policies/ftc?vgtag=badge" class="text"><span style="background: transparent url('//www.viglink.com/public/images/favicon.png') no-repeat 0% 50%; padding-left: 18px;">VigLink</span></a>.
+                    {% endif %}
                 </p>
             </footer>
         </div>
@@ -108,16 +113,18 @@
         <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
 
-    <script type="text/javascript">
-        var vglnk = { api_url: '//api.viglink.com/api',
-                      key: '{% settings_value "VIGLINK_API_KEY" %}' };
+    {% if not "POWELLS"|setting %}
+        <script type="text/javascript">
+            var vglnk = { api_url: '//api.viglink.com/api',
+                          key: '{{ "VIGLINK_API_KEY"|setting }}' };
 
-        (function(d, t) {
-            var s = d.createElement(t); s.type = 'text/javascript'; s.async = true;
-            s.src = ('https:' == document.location.protocol ? vglnk.api_url :
-                '//cdn.viglink.com/api') + '/vglnk.js';
-            var r = d.getElementsByTagName(t)[0]; r.parentNode.insertBefore(s, r);
-        }(document, 'script'));
-    </script>
+            (function(d, t) {
+                var s = d.createElement(t); s.type = 'text/javascript'; s.async = true;
+                s.src = ('https:' == document.location.protocol ? vglnk.api_url :
+                    '//cdn.viglink.com/api') + '/vglnk.js';
+                var r = d.getElementsByTagName(t)[0]; r.parentNode.insertBefore(s, r);
+            }(document, 'script'));
+        </script>
+    {% endif %}
 </body>
 </html>
