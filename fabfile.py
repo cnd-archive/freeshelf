@@ -29,14 +29,14 @@ def restart():
     with cd(remote_dir):
         run('touch freeshelf/wsgi.py')
 
-@hosts('freeshelf.com')
+@hosts('server2.crnixon.org')
 def setup():
-    run('git clone git@github.com:crnixon/freeshelf.git %s' % remote_dir,
+    run('git clone git://github.com/crnixon/freeshelf.git %s' % remote_dir,
         warn_only=True)
     with cd(remote_dir):
-        run('virtualenv-2.6 --distribute env')
+        run('virtualenv --distribute env')
 
-@hosts('freeshelf.com')
+@hosts('server2.crnixon.org')
 def deploy():
     execute(pull_code)
     execute(install_reqs)
