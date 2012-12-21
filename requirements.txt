@@ -1,8 +1,9 @@
-Django==1.4.2
+Django==1.4.3
 django-imagekit==2.0.2
 django-assets==0.8
 django-activelink==0.3
 django-flash==1.8
+django-nose
 South==0.7.6
 PIL==1.1.7
 docutils==0.9.1
